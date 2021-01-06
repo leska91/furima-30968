@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type                 | Options     |
-| ------------------ | -------------------- | ----------- |
-| nickname           | string               | null: false |
-| email              | string               | null: false |
-| encrypted_password | srting               | null: false |
-| last_name_kanji    | string               | null: false |
-| first_name_kanji   | string               | null: false |
-| last_name_kana     | string               | null: false |
-| first_name_kana    | string               | null: false |
-| birthday           | date                 | null: false |
+| Column             | Type                 | Options                  |
+| ------------------ | -------------------- | ------------------------ |
+| nickname           | string               | null: false              |
+| email              | string               | null: false, unique:true |
+| encrypted_password | srting               | null: false              |
+| last_name_kanji    | string               | null: false              |
+| first_name_kanji   | string               | null: false              |
+| last_name_kana     | string               | null: false              |
+| first_name_kana    | string               | null: false              |
+| birthday           | date                 | null: false              |
 
 ### Association
 
@@ -22,7 +22,7 @@
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
-| name                   | text       | null: false                    |
+| name                   | string       | null: false                    |
 | information            | text       | null: false                    |
 | category_id            | integer    | null: false                    |
 | sales_status_id        | integer    | null: false                    |
@@ -37,7 +37,7 @@
 - belongs_to :user
 - has_one :purchase
 
-## purchase テーブル
+## purchases テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -50,7 +50,7 @@
 - belongs_to :item
 - has_one :shipping_info
 
-## shipping_info テーブル
+## shipping_infos テーブル
 
 | Column          | Type       | Options                        |
 | ----------------| ---------- | ------------------------------ |
