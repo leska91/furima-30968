@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+  end
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'は英数字混合にしてください'
@@ -13,13 +16,11 @@ class User < ApplicationRecord
     validates :last_name_kanji
     validates :first_name_kanji
   end
-  
+
   with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/, message: 'は全角カタカナを使用してください' } do
     validates :last_name_kana
     validates :first_name_kana
   end
-
-  validates :birthday, presence: true
 
   has_many :items
   has_many :purchases
