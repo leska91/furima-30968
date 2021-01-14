@@ -14,10 +14,11 @@ class Item < ApplicationRecord
     validates :name
     validates :information
     validates :image
-    validates :sell_price, numericality: { only_integer: true, message: "Half-width number" }
+    validates :sell_price, numericality: { only_integer: true, message: 'Half-width number' }
   end
 
-  validates :sell_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "out of setting range" }
+  validates :sell_price,
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'out of setting range' }
   validates :category_id, numericality: { other_than: 1 }
   validates :sales_status_id, numericality: { other_than: 1 }
   validates :shipping_fee_status_id, numericality: { other_than: 1 }
