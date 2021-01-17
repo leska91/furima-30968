@@ -89,7 +89,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Sell price out of setting range')
       end
       it '価格の値が￥10,000,000以上の場合は登録できない' do
-        @item.sell_price = 10000000
+        @item.sell_price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Sell price out of setting range')
       end

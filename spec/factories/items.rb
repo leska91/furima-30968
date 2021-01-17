@@ -7,7 +7,7 @@ FactoryBot.define do
     shipping_fee_status_id  { 2 }
     prefecture_id           { 6 }
     scheduled_delivery_id   { 3 }
-    sell_price              { 40000 }
+    sell_price              { 40_000 }
     association :user
 
     after(:build) do |item|
