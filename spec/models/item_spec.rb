@@ -34,7 +34,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Category is not a number')
       end
       it 'カテゴリーidが１だと出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Sales status is not a number')
       end
       it '商品の状態についての情報idが１だと出品できない' do
-        @item.sales_status_id = '1'
+        @item.sales_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Sales status must be other than 1')
       end
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Shipping fee status is not a number')
       end
       it '配送料の負担についての情報idが１だと出品できない' do
-        @item.shipping_fee_status_id = '1'
+        @item.shipping_fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping fee status must be other than 1')
       end
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Prefecture is not a number')
       end
       it '発送元の地域についての情報idが０だと出品できない' do
-        @item.prefecture_id = '0'
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture must be other than 0')
       end
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Scheduled delivery is not a number')
       end
       it '発送までの日数についての情報idが１だと出品できない' do
-        @item.scheduled_delivery_id = '1'
+        @item.scheduled_delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Scheduled delivery must be other than 1')
       end
@@ -84,12 +84,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Sell price can't be blank")
       end
       it '価格の値が¥299以下であれば登録できない' do
-        @item.sell_price = '299'
+        @item.sell_price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Sell price out of setting range')
       end
       it '価格の値が￥10,000,000以上の場合は登録できない' do
-        @item.sell_price = '10000000'
+        @item.sell_price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Sell price out of setting range')
       end
