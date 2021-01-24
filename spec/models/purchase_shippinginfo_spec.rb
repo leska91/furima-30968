@@ -60,6 +60,11 @@ RSpec.describe PurchaseShippinginfo, type: :model do
         @purchase_shippinginfo.valid?
         expect(@purchase_shippinginfo.errors.full_messages).to include("Phone number は半角数字ハイフンなし11桁以内で入力してください")
       end
+      it 'tokenが空では登録できないこと' do
+        @purchase_shippinginfo.token = ""
+        @purchase_shippinginfo.valid?
+        expect(@purchase_shippinginfo.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
