@@ -8,6 +8,8 @@ class PurchaseShippinginfo
     validates :address
     validates :phone_number, format: { with: /\A\d{,11}\z/, message: 'は半角数字ハイフンなし11桁以内で入力してください' }
     validates :token
+    validates :item_id
+    validates :user_id
   end
 
   validates :prefecture_id, numericality: { other_than: 0 }

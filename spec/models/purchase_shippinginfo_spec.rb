@@ -13,6 +13,10 @@ RSpec.describe PurchaseShippinginfo, type: :model do
       it '必要な情報を適切に入力すると、商品の購入ができる' do
         expect(@purchase_shippinginfo).to be_valid
       end
+      it '建物名を入力しなくても保存できること' do
+        @purchase_shippinginfo.building = ''
+        expect(@purchase_shippinginfo).to be_valid
+      end
     end
     context '購入できないとき' do
       it '郵便番号が空では登録できないこと' do
@@ -57,6 +61,11 @@ RSpec.describe PurchaseShippinginfo, type: :model do
       end
       it '電話番号が12桁以上の場合は登録できないこと' do
         @purchase_shippinginfo.phone_number = '090000011110'
+        @purchase_shippinginfo.valid?
+        expect(@purchase_shippinginfo.errors.full_messages).to include('Phone number は半角数字ハイフンなし11桁以内で入力してください')
+      end
+      it '電話番号が英数混合では登録できないこと' do
+        @purchase_shippinginfo.phone_number = 'a0a00001111'
         @purchase_shippinginfo.valid?
         expect(@purchase_shippinginfo.errors.full_messages).to include('Phone number は半角数字ハイフンなし11桁以内で入力してください')
       end
